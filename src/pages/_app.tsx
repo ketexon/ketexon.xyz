@@ -8,11 +8,11 @@ import theme from "../style/theme";
 import NavBar from "../components/NavBar";
 
 import { MDXProvider } from "@mdx-js/react";
-import { Components } from "@mdx-js/react/lib/index";
+import type { MDXComponents } from "mdx/types";
 
 import "../stylesheets/next.scss"
 
-const components: Components = {
+const components: MDXComponents = {
 	wrapper: Container
 }
 
