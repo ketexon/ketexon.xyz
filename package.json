@@ -10,7 +10,6 @@
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
-    "acorn-jsx": "5.0.1",
     "gray-matter": "^4.0.3",
     "next": "^13.2.4",
     "next-mdx-remote": "^4.4.1",

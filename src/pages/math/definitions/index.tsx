@@ -1,5 +1,6 @@
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import * as React from "react"
+import Link from "next/link";
 
 type Page = {
 	filename: string,
@@ -12,7 +13,12 @@ export type DefinitionsProps = {
 
 export default function Definitions({pages}: DefinitionsProps){
 	return (
-		<div>{Object.pages}</div>
+		<div>{pages.map((page: Page, i) => (
+			<Link
+				key={i}
+				href={`definitions/${page.filename}`}
+			>{page.matter.data.title || ""}</Link>
+		))}</div>
 	)
 }
 
@@ -21,7 +27,7 @@ import resolvePage from "~/util/resolvePage"
 import path from "node:path"
 import matter from "gray-matter"
 
-// import vs from "~/pages/math/definitions/vector_space.mdx"
+import omit from "~/util/omit";
 
 export async function getStaticProps({}: GetStaticPropsContext): Promise<GetStaticPropsResult<DefinitionsProps>> {
 	const definitions = (await Promise.all(
@@ -31,11 +37,7 @@ export async function getStaticProps({}: GetStaticPropsContext): Promise<GetStat
 					import(`~/pages/math/definitions/${path.basename(filename)}`).then(
 						mod => ({
 							filename: path.basename(filename, path.extname(filename)),
-							matter: {
-								...matter(mod.default),
-								content: undefined,
-								orig: undefined,
-							}
+							matter: omit(matter(mod.default), "content", "orig"),
 						})
 					)
 				)

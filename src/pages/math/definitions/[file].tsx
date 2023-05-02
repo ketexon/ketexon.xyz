@@ -10,6 +10,7 @@ export type MathDefinitionProps = {
 export default function MathDefinition({source, data}: MathDefinitionProps) {
 	return (
 		<MDXRemote {...source}>
+			Hi
 		</MDXRemote>
 	)
 }
