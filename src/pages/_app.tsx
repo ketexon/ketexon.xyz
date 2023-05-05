@@ -8,16 +8,18 @@ import theme from "../style/theme";
 import NavBar from "../components/NavBar";
 
 import { MDXProvider } from "@mdx-js/react";
-import type { MDXComponents } from "mdx/types";
 
+// Styles
 import "../stylesheets/next.scss"
 
-const components: MDXComponents = {
-	wrapper: Container
-}
+// Fonts
+import "@fontsource/bebas-neue"
+import "@fontsource/open-sans"
+
+import { components } from "~/mdx/components";
 
 export default function App({ Component, pageProps }){
-	return <>
+	return (
 		<MDXProvider components={components}>
 			<CssBaseline/>
 			<ThemeProvider theme={theme}>
@@ -25,5 +27,5 @@ export default function App({ Component, pageProps }){
 				<Component {...pageProps}/>
 			</ThemeProvider>
 		</MDXProvider>
-	</>
+	)
 }

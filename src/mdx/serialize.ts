@@ -6,6 +6,7 @@ import { SerializeOptions } from "next-mdx-remote/dist/types";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeExternalLinks from "rehype-external-links";
 
 export async function serialize(source: VFileCompatible, options?: SerializeOptions, rsc?: boolean): Promise<MDXRemoteSerializeResult> {
 	return mdxRemoteSerialize(
@@ -22,6 +23,7 @@ export async function serialize(source: VFileCompatible, options?: SerializeOpti
 				rehypePlugins: [
 					...(options?.mdxOptions?.rehypePlugins || []),
 					rehypeKatex,
+					[rehypeExternalLinks, {target: '_blank'}],
 				],
 			}
 		},

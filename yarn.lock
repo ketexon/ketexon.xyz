@@ -158,6 +158,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.3.0.tgz#ea89004119dc42db2e1dba0f97d553f7372f6fcb"
   integrity sha512-AHPmaAx+RYfZz0eYu6Gviiagpmiyw98ySSlQvCUhVGDRtDFe4DBS0x1bSjdF3gqUDYOczB+yYvBTtEylYSdRhg==
 
+"@fontsource/bebas-neue@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/bebas-neue/-/bebas-neue-4.5.9.tgz#66e73f9a1fc10575a679f7699a47b70fd3ee7e40"
+  integrity sha512-xacwu7elbiZIKgmzE0U4U29oh/WjoAmYLg2Eq9vEvq3cJqfO/wRkQZpNS6o1WU1i804AzJF//91E16c9+VgQlA==
+
+"@fontsource/open-sans@^4.5.14":
+  version "4.5.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.14.tgz#b3e1665c0b3fdfc1f030ded2843749e3cf3a5900"
+  integrity sha512-mBXIIETBlW8q/ocuUN0hyGow2iuf75hQEHQt8R/RJ/HcphVbLg8KB7pHYGbFGDqs75W+SWvTC7JkVeAjT65BuQ==
+
 "@mdx-js/loader@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-2.3.0.tgz#56a6b07eb0027b6407e953a97c52bd8619601161"
@@ -983,6 +993,11 @@ inline-style-parser@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
+
+is-absolute-url@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/is-absolute-url/-/is-absolute-url-4.0.1.tgz#16e4d487d4fded05cfe0685e53ec86804a5e94dc"
+  integrity sha512-/51/TKE88Lmm7Gc4/8btclNXWS+g50wXhYJq8HWIBAGUBnoAdRu1aXeh364t/O7wXDAcTJDP8PNuNKWUDWie+A==
 
 is-alphabetical@^2.0.0:
   version "2.0.1"
@@ -1940,6 +1955,18 @@ regenerator-runtime@^0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
   integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
+
+rehype-external-links@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-external-links/-/rehype-external-links-2.0.1.tgz#fe54f9f227a1a2f8f6afe442ac4c9ee748f08756"
+  integrity sha512-u2dNypma+ps12SJWlS23zvbqwNx0Hl24t0YHXSM/6FCZj/pqWETCO3WyyrvALv4JYvRtuPjhiv2Lpen15ESqbA==
+  dependencies:
+    "@types/hast" "^2.0.0"
+    extend "^3.0.0"
+    is-absolute-url "^4.0.0"
+    space-separated-tokens "^2.0.0"
+    unified "^10.0.0"
+    unist-util-visit "^4.0.0"
 
 rehype-katex@^6.0.3:
   version "6.0.3"
