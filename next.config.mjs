@@ -10,6 +10,7 @@ const nextConfig = {
 	env: {},
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
 	assetPrefix: isProd ? '/ketexon.xyz/' : '',
+	basePath: isProd ? '/ketexon.xyz/' : '',
 	images: {
 		unoptimized: true,
 	},
