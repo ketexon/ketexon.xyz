@@ -12,7 +12,7 @@ function collectionPageGetStaticProps(dir: string){
 	return async function(context: GetStaticPropsContext): Promise<GetStaticPropsResult<CollectionPageProps>> {
 		const file = context.params!.file! as string;
 		const mdx = matter((await import(`~/pages/${dir}/${file}.mdx`)).default);
-		console.log(mdx)
+
 		if(mdx.data.published === false){
 			return {
 				notFound: true,

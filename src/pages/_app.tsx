@@ -12,10 +12,6 @@ import { MDXProvider } from "@mdx-js/react";
 // Styles
 import "../stylesheets/next.scss"
 
-// Fonts
-import "@fontsource/bebas-neue"
-import "@fontsource/open-sans"
-
 import { components } from "~/mdx/components";
 
 export default function App({ Component, pageProps }){

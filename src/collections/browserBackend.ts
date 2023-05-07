@@ -33,7 +33,8 @@ export function collectionBrowserBackend({dir, title}: CollectionBrowserGetStati
 			return {
 				props: {
 					pages: definitions,
-					title
+					title,
+					dir
 				},
 			}
 		}

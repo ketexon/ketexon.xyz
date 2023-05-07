@@ -6,9 +6,10 @@ import Container from "@mui/material/Container"
 import IconButton from "@mui/material/IconButton"
 import MenuIcon from "@mui/icons-material/Menu"
 import Typography  from "@mui/material/Typography";
+import { FlexboxProps } from "@mui/system";
 import Box  from "@mui/material/Box";
 
-import { styled } from "@mui/material/styles"
+import { styled, SxProps, Theme } from "@mui/material/styles"
 
 import Link from "next/link";
 import Button, {ButtonProps} from "@mui/material/Button";
@@ -25,19 +26,63 @@ function NavBarButton({...props}: ButtonProps){
 	/>
 }
 
+type NavbarColumnProps = {
+
+} & FlexboxProps
+
+function NavBarColumn({children, ...rest}: React.PropsWithChildren<NavbarColumnProps>){
+	return (
+		<Box sx={theme => ({
+			height: "inherit",
+			flexGrow: 1,
+			paddingTop: theme.spacing(1),
+			paddingBottom: theme.spacing(1),
+			display: "flex",
+			alignItems: "center",
+			justifyContent: "center",
+			...rest
+		})}>
+			{children}
+		</Box>
+	)
+}
+
 export default function NavBar({}: NavBarProps){
 	return <AppBar component="nav" position="sticky">
-		<Toolbar>
-			<Box sx={theme => ({height: "inherit", flexGrow: 1, paddingTop: theme.spacing(1), paddingBottom: theme.spacing(1)})}>
-				<Link href="/" style={{height: "inherit", flexGrow: 1}}>
-
-				</Link>
+		<Toolbar sx={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)"}}>
+			<div/>
+			<Box sx={theme => ({
+				height: "inherit",
+				flexGrow: 1,
+				paddingTop: theme.spacing(1),
+				paddingBottom: theme.spacing(1),
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center"
+			})}>
+				<Button LinkComponent={Link} href="/" disableElevation disableRipple>
+					<Typography variant="h3" fontFamily="Bebas Neue" sx={theme => ({
+						"--letterSpacing": "1rem",
+						letterSpacing: "var(--letterSpacing)",
+						marginRight: "calc(-1*var(--letterSpacing))",
+						transition: theme.transitions.create(["letter-spacing", "margin-right"], {
+							duration: theme.transitions.duration.standard
+						}),
+						"&:hover": {
+							"--letterSpacing": "1.1rem",
+						}
+					})}>
+						Ketexon
+					</Typography>
+				</Button>
 			</Box>
-			<NavBarButton href="/">
-				<Typography variant="h6">
-					Hello
-				</Typography>
-			</NavBarButton>
+			<NavBarColumn justifyContent="end">
+				<NavBarButton href="/">
+					<Typography variant="h6">
+						Hello
+					</Typography>
+				</NavBarButton>
+			</NavBarColumn>
 		</Toolbar>
 	</AppBar>
 }

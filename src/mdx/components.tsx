@@ -8,10 +8,9 @@ function TypographyVariant(variant: TypographyProps["variant"]){
 }
 
 export const components: MDXComponents = {
-	...Object.fromEntries([1,2,3,4,5].map(
+	...Object.fromEntries([1,2,3,4].map(
 		variant => [`h${variant}`, TypographyVariant(`h${variant + 1}` as TypographyProps['variant'])]
 	)),
-	h6: TypographyVariant("subtitle1"),
 	p: TypographyVariant("body1"),
 	a: ({children, rel, href, target}) => <Link {...{rel, href, target}}>{children}</Link>,
 }
