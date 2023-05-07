@@ -18,12 +18,16 @@ export type NavBarProps = {
 
 }
 
-function NavBarButton({...props}: ButtonProps){
+function NavBarButton({children, ...props}: ButtonProps){
 	return <Button
 		disableRipple={props.disableRipple ?? true}
 		LinkComponent={props.LinkComponent ?? Link}
 		{...props}
-	/>
+	>
+		<Typography variant="h6">
+			{children}
+		</Typography>
+	</Button>
 }
 
 type NavbarColumnProps = {
@@ -51,15 +55,7 @@ export default function NavBar({}: NavBarProps){
 	return <AppBar component="nav" position="sticky">
 		<Toolbar sx={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)"}}>
 			<div/>
-			<Box sx={theme => ({
-				height: "inherit",
-				flexGrow: 1,
-				paddingTop: theme.spacing(1),
-				paddingBottom: theme.spacing(1),
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center"
-			})}>
+			<NavBarColumn>
 				<Button LinkComponent={Link} href="/" disableElevation disableRipple>
 					<Typography variant="h3" fontFamily="Bebas Neue" sx={theme => ({
 						"--letterSpacing": "1rem",
@@ -75,12 +71,10 @@ export default function NavBar({}: NavBarProps){
 						Ketexon
 					</Typography>
 				</Button>
-			</Box>
+			</NavBarColumn>
 			<NavBarColumn justifyContent="end">
-				<NavBarButton href="/">
-					<Typography variant="h6">
-						Hello
-					</Typography>
+				<NavBarButton href="/math">
+					Math
 				</NavBarButton>
 			</NavBarColumn>
 		</Toolbar>
