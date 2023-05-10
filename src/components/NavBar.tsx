@@ -14,8 +14,6 @@ import { styled, SxProps, Theme, useTheme } from "@mui/material/styles"
 import Link from "next/link";
 import Button, {ButtonProps} from "@mui/material/Button";
 
-import { useCookies } from "react-cookie";
-
 type NavBarButtonProps = {
 } & ButtonProps
 
@@ -32,7 +30,7 @@ function NavBarButton({children, ...props}: NavBarButtonProps){
 				backgroundImage: "var(--background-gradient)",
 				backgroundClip: "text",
 				color: "transparent",
-				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 1em) right 0",
+				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 0.5em) right 0",
 				lineHeight: 1,
 				transition: theme.transitions.create(["background-position"], {duration: theme.transitions.duration.standard}),
 				WebkitTextStroke: "var(--text-stroke-nav)"
@@ -92,7 +90,7 @@ export default function NavBar({}: NavBarProps){
 						duration: theme.transitions.duration.standard
 					}),
 					backgroundImage: "var(--background-gradient)",
-					backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered) + 1)* 32px) right 0",
+					backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered) + 1) * 32px) right 0",
 				})}>
 					<div/>
 					<NavBarColumn>
@@ -112,7 +110,7 @@ export default function NavBar({}: NavBarProps){
 									duration: theme.transitions.duration.standard
 								}),
 								lineHeight: 1,
-								backgroundPosition: "bottom calc(1em*(var(--logo-cycle) + var(--logo-hovered))) right 0",
+								backgroundPosition: "bottom calc(0.5em*(var(--logo-cycle) + var(--logo-hovered))) right 0",
 								backgroundImage: "var(--background-gradient)",
 								backgroundClip: "text",
 								color: "transparent",
