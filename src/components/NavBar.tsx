@@ -32,7 +32,8 @@ function NavBarButton({children, ...props}: NavBarButtonProps){
 				backgroundImage: "var(--background-gradient)",
 				backgroundClip: "text",
 				color: "transparent",
-				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 16px) right 0",
+				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 1em) right 0",
+				lineHeight: 1,
 				transition: theme.transitions.create(["background-position"], {duration: theme.transitions.duration.standard}),
 				WebkitTextStroke: "var(--text-stroke-nav)"
 			})}
@@ -70,8 +71,6 @@ export type NavBarProps = {}
 export default function NavBar({}: NavBarProps){
 	const [logoCycle, setLogoCycle] = React.useState(0);
 	const [logoHovered, setLogoHovered] = React.useState(false);
-	console.log(logoHovered)
-	const remPerLogoCycle = 2.75/2;
 	return (
 		<>
 			<AppBar component="nav" position="sticky">
@@ -93,7 +92,7 @@ export default function NavBar({}: NavBarProps){
 						duration: theme.transitions.duration.standard
 					}),
 					backgroundImage: "var(--background-gradient)",
-					backgroundPosition: "bottom calc(var(--logo-cycle) * 32px + 32px + 32px * var(--logo-hovered)) right 0",
+					backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered) + 1)* 32px) right 0",
 				})}>
 					<div/>
 					<NavBarColumn>
@@ -107,13 +106,13 @@ export default function NavBar({}: NavBarProps){
 						>
 							<Typography variant="h3" fontFamily="Bebas Neue" sx={theme => ({
 								"--letter-spacing": "calc(1rem + var(--logo-hovered) * 0.1rem)",
-								"--rem-per-logo-cycle": `${remPerLogoCycle}rem`,
 								letterSpacing: "var(--letter-spacing)",
 								marginRight: "calc(-1*var(--letter-spacing))",
 								transition: theme.transitions.create(["letter-spacing", "margin-right", "background-position"], {
 									duration: theme.transitions.duration.standard
 								}),
-								backgroundPosition: "bottom calc(var(--rem-per-logo-cycle)*(var(--logo-cycle) + var(--logo-hovered))) right 0",
+								lineHeight: 1,
+								backgroundPosition: "bottom calc(1em*(var(--logo-cycle) + var(--logo-hovered))) right 0",
 								backgroundImage: "var(--background-gradient)",
 								backgroundClip: "text",
 								color: "transparent",
