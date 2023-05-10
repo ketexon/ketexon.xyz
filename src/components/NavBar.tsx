@@ -28,12 +28,14 @@ function NavBarButton({children, ...props}: NavBarButtonProps){
 		<Typography
 			variant="h6"
 			fontWeight="bold"
-			sx={{
+			sx={theme => ({
 				backgroundImage: "var(--background-gradient)",
 				backgroundClip: "text",
 				color: "transparent",
-				backgroundPosition: "bottom calc((2 * var(--logo-cycle) + var(--logo-hovered)) * 16px) right 0"
-			}}
+				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 16px) right 0",
+				transition: theme.transitions.create(["background-position"], {duration: theme.transitions.duration.standard}),
+				WebkitTextStroke: "var(--text-stroke-nav)"
+			})}
 		>
 			{children}
 		</Typography>
@@ -76,6 +78,8 @@ export default function NavBar({}: NavBarProps){
 				<Toolbar sx={theme => ({
 					"--logo-cycle": `${logoCycle}`,
 					"--logo-hovered": logoHovered ? 1 : 0,
+					"--text-stroke-logo": `1px rgba(0,0,0,0.5)`,
+					"--text-stroke-nav": "1px rgba(0,0,0,0.5)",
 					"--background-gradient": `linear-gradient(
 						0deg,
 						${theme.palette.primary.main} 0%,
@@ -110,21 +114,10 @@ export default function NavBar({}: NavBarProps){
 									duration: theme.transitions.duration.standard
 								}),
 								backgroundPosition: "bottom calc(var(--rem-per-logo-cycle)*(var(--logo-cycle) + var(--logo-hovered))) right 0",
-								// "&:hover": {
-								// 	// "--letter-spacing": "1.1rem",
-								// 	// backgroundPosition: "bottom calc(var(--rem-per-logo-cycle)*var(--logo-cycle) + 0.75rem) right 0",
-								// 	backgroundPosition: "bottom calc(var(--rem-per-logo-cycle)*(var(--logo-cycle) + 1)) right 0",
-								// },
-								// backgroundImage: `linear-gradient(
-								// 	0deg,
-								// 	${theme.palette.primary.main} 0%,
-								// 	${theme.palette.primary.main} 50%,
-								// 	${theme.palette.secondary.main} 50%,
-								// 	${theme.palette.secondary.main} 100%
-								// )`,
 								backgroundImage: "var(--background-gradient)",
 								backgroundClip: "text",
-								color: "transparent"
+								color: "transparent",
+								WebkitTextStroke: "var(--text-stroke-logo)"
 							})}>
 								Ketexon
 							</Typography>
