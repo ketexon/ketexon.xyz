@@ -12,7 +12,14 @@ import "@fontsource/open-sans/variable-italic.css"
 export default responsiveFontSizes(createTheme({
 	palette: {
 		primary: {
-			main: "#ED3266"
+			main: "#FF5E5B"
+		},
+		secondary: {
+			main: "#00CECB"
+		},
+		background: {
+			default: "#EEE5E9",
+			paper: "#EEE5E9",
 		}
 	},
 	typography: {
