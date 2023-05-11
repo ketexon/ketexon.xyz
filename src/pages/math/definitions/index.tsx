@@ -1,11 +1,6 @@
-export { CollectionBrowser as default } from "~/collections/browser";
+export { PageBrowser as default } from "~/collections/pageBrowser";
 
+import { pageBrowserBackend } from "~/collections/pageBrowserBackend";
 
-import { collectionBrowserBackend } from "~/collections/browserBackend";
-
-const { getStaticProps } = collectionBrowserBackend({
-	dir: "math/definitions",
-	title: "Definitions"
-})
-
+const { getStaticProps } = pageBrowserBackend({ dir: new URL(import.meta.url) })
 export { getStaticProps }

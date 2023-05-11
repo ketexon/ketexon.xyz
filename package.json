@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "gray-matter": "^4.0.3",
+    "memoize-one": "^6.0.0",
     "next": "^13.2.4",
     "next-mdx-remote": "^4.4.1",
     "react": "^18.2.0",

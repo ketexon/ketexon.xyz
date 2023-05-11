@@ -2,14 +2,9 @@ import * as React from "react";
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Container from "@mui/material/Container"
-import IconButton from "@mui/material/IconButton"
-import MenuIcon from "@mui/icons-material/Menu"
 import Typography  from "@mui/material/Typography";
 import { FlexboxProps, DisplayProps } from "@mui/system";
 import Box  from "@mui/material/Box";
-
-import { styled, SxProps, Theme, useTheme } from "@mui/material/styles"
 
 import Link from "next/link";
 import Button, {ButtonProps} from "@mui/material/Button";
@@ -21,6 +16,13 @@ function NavBarButton({children, ...props}: NavBarButtonProps){
 	return <Button
 		disableRipple={props.disableRipple ?? true}
 		LinkComponent={props.LinkComponent ?? Link}
+		sx={theme => ({
+			"--text-hovered": "0",
+			"&:hover": {
+				"--text-stroke-nav": "var(--text-stroke-width) var(--text-stroke-color-highlighted)",
+				"--text-hovered": "1"
+			}
+		})}
 		{...props}
 	>
 		<Typography
@@ -30,9 +32,12 @@ function NavBarButton({children, ...props}: NavBarButtonProps){
 				backgroundImage: "var(--background-gradient)",
 				backgroundClip: "text",
 				color: "transparent",
-				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered)) * 0.5em) right 0",
+				backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered) + var(--text-hovered)) * 0.5em) right 0",
 				lineHeight: 1,
-				transition: theme.transitions.create(["background-position"], {duration: theme.transitions.duration.standard}),
+				transition: theme.transitions.create(
+					["background-position", "text-stroke", "-webkit-text-stroke"],
+					{duration: theme.transitions.duration.standard}
+				),
 				WebkitTextStroke: "var(--text-stroke-nav)"
 			})}
 		>
@@ -75,8 +80,13 @@ export default function NavBar({}: NavBarProps){
 				<Toolbar sx={theme => ({
 					"--logo-cycle": `${logoCycle}`,
 					"--logo-hovered": logoHovered ? 1 : 0,
-					"--text-stroke-logo": `1px rgba(0,0,0,0.5)`,
-					"--text-stroke-nav": "1px rgba(0,0,0,0.5)",
+
+					"--text-stroke-color": "rgba(0,0,0,0.5)",
+					"--text-stroke-color-highlighted": "rgba(0,0,0,0.6)",
+					"--text-stroke-width": "1px",
+					"--text-stroke-logo": `var(--text-stroke-width) var(--text-stroke-color)`,
+					"--text-stroke-nav-base": "var(--text-stroke-width) var(--text-stroke-color)",
+					"--text-stroke-nav": "var(--text-stroke-nav-base)",
 					"--background-gradient": `linear-gradient(
 						0deg,
 						${theme.palette.primary.main} 0%,
