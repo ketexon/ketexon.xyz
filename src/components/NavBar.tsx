@@ -131,6 +131,9 @@ export default function NavBar({}: NavBarProps){
 						</Button>
 					</NavBarColumn>
 					<NavBarColumn justifyContent="end">
+						<NavBarButton href="/about">
+							About
+						</NavBarButton>
 						<NavBarButton href="/math">
 							Math
 						</NavBarButton>
