@@ -5,7 +5,8 @@ import { collectionBrowserBackend } from "~/collections/collectionBrowserBackend
 const { getStaticProps } = collectionBrowserBackend({
 	title: "Math",
 	collections: [
-		{ dir: "math/definitions" }
+		{ dir: "math/definitions" },
+		{ dir: "math/proofs" },
 	]
 })
 
