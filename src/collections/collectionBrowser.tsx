@@ -44,7 +44,7 @@ export function CollectionBrowser({collections, title}: CollectionBrowserProps) 
 							<Card>
 								<CardActionArea
 									href={collection.dir}
-									LinkComponent={NextLink}
+									component={NextLink}
 									disableRipple
 								>
 									<CardContent>
@@ -66,7 +66,7 @@ export function CollectionBrowser({collections, title}: CollectionBrowserProps) 
 												disablePadding
 											>
 												<ListItemButton
-													LinkComponent={NextLink}
+													component={NextLink}
 													href={`/${collection.dir}/${page.filename}`}
 													disableTouchRipple
 												>

@@ -27,6 +27,7 @@ export default function App({ Component, pageProps }){
 				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 				<meta name="theme-color" content={theme.palette.primary.main}/>
 				<meta name="color-scheme" content="only light"/>
+				<meta name="creator" content="Zane Clark"/>
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline/>
