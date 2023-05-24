@@ -17,6 +17,8 @@ import ListItemText from "@mui/material/ListItemText";
 
 import { PageBrowserPage } from "~/collections/pageBrowserBackend";
 
+import format from "~/util/normalizeDate";
+
 type Collection = {
 	title: string,
 	dir: string,
@@ -72,7 +74,16 @@ export function CollectionBrowser({collections, title}: CollectionBrowserProps) 
 												>
 													<ListItemText
 														primary={page.matter.data.title ?? ""}
-														secondary={page.matter.data.description ?? ""}
+														secondary={
+															<>
+																<Typography component="span" variant="subtitle1">
+																	{page.matter.data.description}
+																</Typography>
+																<Typography component="span" variant="subtitle2" fontStyle="italic">
+																	{page.matter.data.date && format(page.matter.data.date)}
+																</Typography>
+															</>
+														}
 													/>
 												</ListItemButton>
 											</ListItem>

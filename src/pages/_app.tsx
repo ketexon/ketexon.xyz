@@ -4,10 +4,11 @@ import Head from "next/head";
 import { ThemeProvider, styled } from "@mui/material/styles";
 import CssBaseline from '@mui/material/CssBaseline';
 
-import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 
 import theme from "../style/theme";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 import { MDXProvider } from "@mdx-js/react";
 
@@ -31,8 +32,15 @@ export default function App({ Component, pageProps }){
 			</Head>
 			<ThemeProvider theme={theme}>
 				<CssBaseline/>
-				<NavBar/>
-				<Component {...pageProps}/>
+				<Box sx={{display: "flex", flexDirection: "column", height: "100%"}}>
+					<NavBar/>
+					<Box sx={{flexGrow: 1, display: "flex", flexDirection: "column"}}>
+						<Box sx={{flexGrow: 1}}>
+							<Component {...pageProps}/>
+						</Box>
+						<Footer/>
+					</Box>
+				</Box>
 			</ThemeProvider>
 		</MDXProvider>
 	)

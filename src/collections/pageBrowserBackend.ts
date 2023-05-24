@@ -18,6 +18,7 @@ export type PageBrowserPage = {
 
 export type PageBrowserGetStaticPropsOptions = {
 	dir: string | URL,
+	pinnedPages?: Partial<PageBrowserPage>[],
 	title?: string
 }
 
@@ -39,16 +40,25 @@ export async function walkCollectionPages(dir: string): Promise<PageBrowserPage[
 	return pages;
 }
 
-export function pageBrowserBackend({dir, title}: PageBrowserGetStaticPropsOptions) {
+export function pageBrowserBackend({dir, pinnedPages, title}: PageBrowserGetStaticPropsOptions) {
 	const dirString = normalizePageURL(dir);
 	if(title === undefined){
 		title = titleCase(path.basename(dirString));
 	}
 	return {
 		getStaticProps: async function({}: GetStaticPropsContext): Promise<GetStaticPropsResult<PageBrowserProps>> {
+			const pages = await walkCollectionPages(dirString);
 			return {
 				props: {
-					pages: await walkCollectionPages(dirString),
+					pages,
+					pinnedPages: pinnedPages ? pages.filter(
+						page => pinnedPages.some(
+							pinned => pinned.filename === page.filename
+								|| pinned.matter && page.matter && Object.entries(page.matter.data).every(
+									entry => Object.entries(pinned.matter!.data).includes(entry)
+								)
+						)
+					) : [],
 					title: title as string,
 					dir: dirString
 				},

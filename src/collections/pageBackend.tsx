@@ -2,14 +2,14 @@ import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsContext, Get
 import { serialize } from "~/mdx/serialize"
 import matter from "gray-matter"
 
-import { PageProps } from "./page";
+import { PageFrontendOptions, PageProps } from "./page";
 
 import walk from "~/util/walk";
 import resolvePage from "~/util/resolvePage";
 import path from "node:path";
 import normalizePageURL from "~/util/normalizePageURL";
 
-function pageGetStaticProps(dir: string){
+function pageGetStaticProps(dir: string, frontendOptions?: PageFrontendOptions){
 	return async function(context: GetStaticPropsContext): Promise<GetStaticPropsResult<PageProps>> {
 		const file = context.params!.file! as string;
 		const mdx = matter((await import(`~/pages/${dir}/${file}.mdx`)).default);
@@ -22,7 +22,8 @@ function pageGetStaticProps(dir: string){
 		return {
 			props: {
 				source: await serialize(mdx.content),
-				data: mdx.data
+				data: mdx.data,
+				options: frontendOptions || null
 			},
 		}
 	}
@@ -43,12 +44,13 @@ function pageGetStaticPaths(dir: string){
 
 export type CollectionPageBackendOptions = {
 	dir: string | URL,
+	frontendOptions?: PageFrontendOptions
 }
 
-export function collectionPageBackend({dir}: CollectionPageBackendOptions){
+export function collectionPageBackend({dir, frontendOptions}: CollectionPageBackendOptions){
 	dir = normalizePageURL(dir);
 	return {
-		getStaticProps: pageGetStaticProps(dir),
+		getStaticProps: pageGetStaticProps(dir, frontendOptions),
 		getStaticPaths: pageGetStaticPaths(dir)
 	}
 }

@@ -2,15 +2,20 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import * as React from "react"
 
 import Typography from "@mui/material/Typography"
-import Container from "@mui/material/Container"
+import Container, {ContainerProps} from "@mui/material/Container"
 import Head from "next/head"
+
+export type PageFrontendOptions = Partial<{
+	containerMaxWidth: ContainerProps["maxWidth"]
+}>
 
 export type PageProps = {
 	source: MDXRemoteSerializeResult,
-	data: {[k: string]: any}
+	data: {[k: string]: any},
+	options: PageFrontendOptions | null
 }
 
-export function Page({source, data}: PageProps) {
+export function Page({source, data, options}: PageProps) {
 	return (
 		<>
 			<Head>
@@ -19,7 +24,7 @@ export function Page({source, data}: PageProps) {
 				{data.keywords && <meta name="keywords" content={data.keywords}/>}
 				<meta name="author" content={data.author || "Zane Clark"}/>
 			</Head>
-			<Container sx={{pb: 4}}>
+			<Container sx={{pb: 4}} maxWidth={options?.containerMaxWidth || "md"}>
 				<Typography variant="h1">
 					{data.title}
 				</Typography>

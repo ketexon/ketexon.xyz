@@ -9,6 +9,13 @@ import Box  from "@mui/material/Box";
 import Link from "next/link";
 import Button, {ButtonProps} from "@mui/material/Button";
 
+const NavLinks: {text: string, href: string}[] = [
+	{text: "About", href: "/about"},
+	{text: "Math", href: "/math"},
+	{text: "CS", href: "/computer-science"},
+	{text: "Writing", href: "/writing"},
+]
+
 type NavBarButtonProps = {
 } & ButtonProps
 
@@ -102,7 +109,7 @@ export default function NavBar({}: NavBarProps){
 					backgroundImage: "var(--background-gradient)",
 					backgroundPosition: "bottom calc((var(--logo-cycle) + var(--logo-hovered) + 1) * 32px) right 0",
 				})}>
-					<div/>
+					<div/> {/*spacer for the grid to work*/}
 					<NavBarColumn>
 						<Button
 							disableElevation disableRipple
@@ -131,12 +138,13 @@ export default function NavBar({}: NavBarProps){
 						</Button>
 					</NavBarColumn>
 					<NavBarColumn justifyContent="end">
-						<NavBarButton href="/about">
-							About
-						</NavBarButton>
-						<NavBarButton href="/math">
-							Math
-						</NavBarButton>
+						{
+							NavLinks.map(({text, href}, idx) => (
+								<NavBarButton key={idx} href={href}>
+									{text}
+								</NavBarButton>
+							))
+						}
 					</NavBarColumn>
 				</Toolbar>
 			</AppBar>
