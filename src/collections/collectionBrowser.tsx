@@ -18,6 +18,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { PageBrowserPage } from "~/collections/pageBrowserBackend";
 
 import format from "~/util/normalizeDate";
+import Title from "~/components/Title";
 
 type Collection = {
 	title: string,
@@ -33,9 +34,7 @@ export type CollectionBrowserProps = {
 export function CollectionBrowser({collections, title}: CollectionBrowserProps) {
 	return (
 		<Container>
-			<Head>
-				<title>{title}</title>
-			</Head>
+			<Title>{title}</Title>
 			<Typography variant="h1">
 				{title}
 			</Typography>

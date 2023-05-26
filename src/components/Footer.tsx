@@ -16,6 +16,9 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopyOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export type NavBarProps = {}
 
@@ -31,9 +34,9 @@ export default function Footer({}: NavBarProps){
 
 	return (
 		<>
-			<Snackbar open={snackbarOpen} autoHideDuration={5000} onClose={closeSnackbar}>
+			<Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={closeSnackbar}>
 				<Alert onClose={closeSnackbar} severity="success">
-					Successfully copied to clipboard
+					Copied to clipboard
 				</Alert>
 			</Snackbar>
 			<Paper component="footer" square sx={theme => ({ py: 2, width: "100%",})}>
@@ -46,7 +49,20 @@ export default function Footer({}: NavBarProps){
 						</Typography>
 					</Box>
 					<Box>
-
+						<Box sx={{
+							display: "flex",
+							width: "100%",
+							justifyContent: "flex-end",
+							"> *": {
+								flexGrow: 1,
+								textAlign: "center",
+								maxWidth: "128px"
+							}
+						}}>
+							<Box><IconButton disableRipple component={NextLink} href="https://github.com/ketexon" target="_blank" rel="noopenner"><GitHubIcon fontSize="large"/></IconButton></Box>
+							<Box><IconButton disableRipple component={NextLink} href="https://www.linkedin.com/in/zane-clark-52a48a166/" target="_blank" rel="noopenner"><LinkedInIcon fontSize="large"/></IconButton></Box>
+							<Box><IconButton disableRipple component={NextLink} href="https://www.youtube.com/channel/UCli-MHrym5Vjk0ai4m1EBpQ" target="_blank" rel="noopenner"><YouTubeIcon fontSize="large"/></IconButton></Box>
+						</Box>
 					</Box>
 				</Container>
 			</Paper>
