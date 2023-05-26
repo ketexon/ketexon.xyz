@@ -42,7 +42,7 @@ export default function Footer({}: NavBarProps){
 			<Paper component="footer" square sx={theme => ({ py: 2, width: "100%",})}>
 				<Container maxWidth="lg" sx={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
 					<Box>
-						<Typography variant="body1">Aubrey Clark</Typography>
+						<Typography variant="body1">Zane Aubrey Clark</Typography>
 						<Typography variant="body1">
 							<Link href={`mailto:${email}`}>{email}</Link>
 							<IconButton disableRipple onClick={copyEmail}><ContentCopyIcon fontSize="small"/></IconButton>
