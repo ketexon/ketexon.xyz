@@ -23,7 +23,7 @@ export default responsiveFontSizes(createTheme({
 		}
 	},
 	typography: {
-		fontFamily: '"Open Sans",sans-serif',
+		fontFamily: '"Open Sans", sans-serif',
 		h1: {
 			fontSize: "2.5rem",
 			fontWeight: "bolder",

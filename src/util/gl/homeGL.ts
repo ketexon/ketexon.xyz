@@ -451,7 +451,7 @@ export function initHomeGL(canvas: HTMLCanvasElement, sizer: HTMLDivElement, the
 					cubesInProgress.delete(cubeIdx)
 				}
 				else{
-					transform.translation.y = lerp(transform.translation.y, targetY, delta/1000 * CUBE_LERP_MULT)
+					transform.translation.y = lerp(transform.translation.y, targetY, Math.min(delta/1000 * CUBE_LERP_MULT, 1))
 				}
 				scene.regenerateObject(cubeID);
 			}
