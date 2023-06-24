@@ -2,13 +2,64 @@ import * as React from "react"
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Title from "~/components/Title";
+import { useTheme } from "@mui/system";
+
+import { keyframes } from "@mui/material/styles";
 
 type LayerProps = {
 	variant?: boolean,
 }
 
+const titleEnterAnimation = keyframes(`
+	0% {
+		transform: translateY(-50vh);
+	}
+	60%, 80% {
+		transform: translateY(8%);
+	}
+	70% {
+		transform: translateY(12%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+`)
+
+const subtitleEnterAnimation = keyframes(`
+	0%, 20% {
+		transform: translateY(50vh);
+	}
+	100% {
+		transform: translateY(0);
+	}
+`)
+
+const titleWiggleAnimationStart = keyframes(`
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(1deg);
+	}
+`)
+
+const titleWiggleAnimation = keyframes(`
+	0% {
+		transform: rotate(1deg);
+	}
+	100% {
+		transform: rotate(-1deg);
+	}
+`)
+
+const titleEnterAnimationDuration = 500;
+const titleWiggleAnimationDuration = 1000;
+
 const Layer = React.forwardRef<HTMLDivElement, LayerProps>(
 	({variant}, ref) => {
+		const theme = useTheme();
+		const primary = variant ? theme.palette.primary.main : theme.palette.secondary.main;
+		const secondary = variant ? theme.palette.secondary.main : theme.palette.primary.main;
 		return <Box
 			ref={ref}
 			sx={theme => ({
@@ -21,14 +72,15 @@ const Layer = React.forwardRef<HTMLDivElement, LayerProps>(
 				alignItems: "center",
 
 				userSelect: "none",
+				opacity: variant ? 0 : 1,
 
-				backgroundColor: variant ? theme.palette.secondary.main : theme.palette.primary.main,
+				backgroundColor: primary,
 
 				pointerEvents: variant ? "none" : null,
 				zIndex: variant ? 1 : null,
 			})}
 		>
-			<Box sx={theme => ({ textAlign: "center", color: variant ? theme.palette.primary.main : theme.palette.secondary.main })}>
+			<Box sx={theme => ({ textAlign: "center", color: secondary })}>
 				<Typography
 					variant="h1"
 					sx={theme => ({
@@ -36,6 +88,22 @@ const Layer = React.forwardRef<HTMLDivElement, LayerProps>(
 						letterSpacing: 4,
 						lineHeight: 1,
 						textShadow: `-0.25rem 0.25rem 0 rgba(0, 0, 0, 0.2)`,
+						animation: `
+							${titleEnterAnimationDuration}ms
+							${theme.transitions.easing.easeOut}
+							${titleEnterAnimation},
+
+							${titleWiggleAnimationDuration / 2}ms
+							${theme.transitions.easing.sharp}
+							${titleEnterAnimationDuration}ms
+							${titleWiggleAnimationStart},
+
+							${titleWiggleAnimationDuration}ms
+							${theme.transitions.easing.sharp}
+							${titleEnterAnimationDuration + titleWiggleAnimationDuration/2}ms
+							infinite alternate
+							${titleWiggleAnimation}
+						`
 					})}
 					style={{
 						fontSize: "4rem",
@@ -49,6 +117,12 @@ const Layer = React.forwardRef<HTMLDivElement, LayerProps>(
 						lineHeight: 1,
 						pt: theme.spacing(2),
 						textShadow: `-0.1rem 0.1rem 0 rgba(0, 0, 0, 0.2)`,
+
+						animation: `
+							${titleEnterAnimationDuration}ms
+							${theme.transitions.easing.easeOut}
+							${subtitleEnterAnimation}
+						`
 					})}
 					style={{
 						fontSize: "1.25rem",
@@ -77,7 +151,7 @@ export default function KetexonHome(){
 		}
 
 		function onMouseMove(e: MouseEvent){
-			cursor.style.display = "flex";
+			cursor.style.opacity = "1";
 			cursor.style.clipPath = `circle(4rem at ${e.clientX}px calc(${e.clientY}px - 4rem))`;
 		}
 	})

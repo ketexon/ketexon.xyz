@@ -40,16 +40,16 @@ export default responsiveFontSizes(createTheme({
 			lineHeight: 1.5,
 		},
 		h4: {
-			fontSize: "1.5rem",
+			fontSize: "1.25rem",
 			fontWeight: "bold",
 			lineHeight: 1.5,
 		},
 		h5: {
-			fontSize: "1.25rem",
+			fontSize: "1rem",
 			fontWeight: "bold",
 		},
 		h6: {
-			fontSize: "1.25rem",
+			fontSize: "1rem",
 			fontWeight: "inherit",
 		},
 	},

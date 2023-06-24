@@ -19,33 +19,25 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopyOutlined';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { CopyClipboardButton, CopyClipboardSnackbar } from "~/components/CopyClipboard";
 
 export type NavBarProps = {}
 
 
 export default function Footer({}: NavBarProps){
-	const email = "zane.a.s.clark@gmail.com"
-	const copyEmail = () => {
-		navigator.clipboard.writeText(email).then(() => setSnackbarOpen(true))
-	}
-
 	const [snackbarOpen, setSnackbarOpen] = React.useState(false);
-	const closeSnackbar = () => {setSnackbarOpen(false);};
 
+	const email = "zane.a.s.clark@gmail.com"
 	return (
 		<>
-			<Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={closeSnackbar}>
-				<Alert onClose={closeSnackbar} severity="success">
-					Copied to clipboard
-				</Alert>
-			</Snackbar>
 			<Paper component="footer" square sx={theme => ({ py: 2, width: "100%",})}>
+				<CopyClipboardSnackbar open={snackbarOpen} setOpen={setSnackbarOpen}/>
 				<Container maxWidth="lg" sx={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
 					<Box>
 						<Typography variant="body1">Zane Aubrey Clark</Typography>
 						<Typography variant="body1">
 							<Link href={`mailto:${email}`}>{email}</Link>
-							<IconButton disableRipple onClick={copyEmail}><ContentCopyIcon fontSize="small"/></IconButton>
+							<CopyClipboardButton text={email} setSnackbarOpen={setSnackbarOpen}/>
 						</Typography>
 					</Box>
 					<Box>
