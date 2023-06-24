@@ -52,7 +52,7 @@ export const workExperience: WorkExperienceEntry[] = [
 				</Tooltip>
 			</Typography>
 		</>,
-		types: ["Computer Science", "Web Dev"],
+		types: ["Computer Science", "Web Dev", "UI/UX"],
 	},
 	{
 		title: "UCLA ACM Studio Club Board Member",
@@ -75,7 +75,7 @@ export const workExperience: WorkExperienceEntry[] = [
 				</Link> (WIP)
 			</Typography>
 		</>,
-		types: ["Computer Science", "Web Dev"],
+		types: ["Computer Science", "Web Dev", "UI/UX"],
 	},
 	{
 		title: "Coronado Locals Card Web Developer",
@@ -209,6 +209,17 @@ export type ProjectItemEntry = {
 }
 
 export const projectItems: ProjectItemEntry[] = [
+	{
+		name: "Personal Website (New and Improved!)",
+		date: "Ongoing",
+		href: {
+			"GitHub": "https://github.com/ketexon/ketexon.xyz",
+		},
+		description: "This website.",
+		types: ["Computer Science", "Web Dev", "UI/UX"],
+		tags: ["Small Scale", "NextJS", "WIP"],
+	},
+
 	{
 		name: "studio.uclaacm.com",
 		date: "Ongoing",

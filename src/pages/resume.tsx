@@ -288,9 +288,8 @@ function Projects({filters}: PanelProps){
 				checked={hideWIP}
 				onChange={(e, v) => setHideWIP(v)}
 			/>
-
 		</Box>
-		<List disablePadding sx={{maxHeight: "23rem", overflow: "scroll"}}>
+		<List disablePadding sx={{maxHeight: "24rem", overflow: "scroll"}}>
 			{
 				filteredProjects.map(project => <ProjectItem key={project.name} {...project}/>)
 			}
