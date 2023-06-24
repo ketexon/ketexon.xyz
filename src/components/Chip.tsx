@@ -33,8 +33,8 @@ const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(({sx, ...props}: Chi
 
 	return <MuiChipCasted
 		ref={ref}
-		disableRipple
-		disableTouchRipple
+		// disableRipple
+		// disableTouchRipple
 		sx={newSx}
 		{...props}
 	/>

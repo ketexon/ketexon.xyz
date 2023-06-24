@@ -290,6 +290,18 @@ export const projectItems: ProjectItemEntry[] = [
 	},
 
 	{
+		name: "Personal Website",
+		date: "2022",
+		description: "Personal website made using GitHub pages, Jekyll, and Bootstrap.",
+		href: {
+			"GitHub (Source)": "https://github.com/ketexon/ketexon.github.io_source",
+			"Website": "https://www.ketexon.xyz",
+		},
+		types: ["Computer Science", "Web Dev", "UI/UX"],
+		tags: ["Small Scale", "Jekyll"]
+	},
+
+	{
 		name: "Debugger",
 		date: "2022",
 		href: {
@@ -304,7 +316,9 @@ export const projectItems: ProjectItemEntry[] = [
 	{
 		name: "Climate Clock Bot",
 		date: "2022",
-		href: "https://github.com/ketexon/climateclockbot",
+		href: {
+			"GitHub": "https://github.com/ketexon/climateclockbot",
+		},
 		description: <>
 			Reddit bot written in python that registers a !climateclock command that displays information from
 			the <Link href="https://climateclock.world/" blank>Climate Clock</Link>
