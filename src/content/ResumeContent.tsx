@@ -210,6 +210,17 @@ export type ProjectItemEntry = {
 
 export const projectItems: ProjectItemEntry[] = [
 	{
+		name: "Minesweeper SDL",
+		date: "2023",
+		href: {
+			"GitHub": "https://github.com/ketexon/Minesweeper-SDL",
+			"GitHub Release": "https://github.com/ketexon/Minesweeper-SDL/releases/latest"
+		},
+		description: "Minesweeper written in C17 using SDL and WinAPI.",
+		types: ["Computer Science", "Game Dev"],
+		tags: ["Small Scale", "SDL/C"]
+	},
+	{
 		name: "Personal Website (New and Improved!)",
 		date: "Ongoing",
 		href: {
@@ -267,7 +278,7 @@ export const projectItems: ProjectItemEntry[] = [
 		},
 		description: "A small website of a chinchilla spinning using Three.js.",
 		types: ["Computer Science", "Web Dev"],
-		tags: ["Meme"],
+		tags: ["Meme", "Three.js"],
 	},
 
 	{
