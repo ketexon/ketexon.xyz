@@ -171,26 +171,6 @@ export const skills: SkillEntry[] = [
 	},
 
 	{
-		iconClass: "devicon-illustrator-plain",
-		name: "Illustrator",
-		experience: "Intermediate, 6 years",
-		types: ["UI/UX"],
-	},
-
-	{
-		iconClass: "devicon-aftereffects-plain",
-		name: "After Effects",
-		experience: "Beginner, 6 years",
-		types: [],
-	},
-
-	{
-		iconClass: "devicon-git-plain",
-		name: "Git",
-		types: ["Computer Science"],
-	},
-
-	{
 		name: "French",
 		experience: "Intermediate, 4 years",
 		types: [],

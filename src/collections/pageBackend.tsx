@@ -8,8 +8,14 @@ import walk from "~/util/walk";
 import resolvePage from "~/util/resolvePage";
 import path from "node:path";
 import normalizePageURL from "~/util/normalizePageURL";
+import backDir from "~/util/backDir";
 
-function pageGetStaticProps(dir: string, frontendOptions?: PageFrontendOptions){
+type PageGetStaticPropsParams = {
+	dir: string,
+	frontendOptions?: PageFrontendOptions
+}
+
+function pageGetStaticProps({dir, frontendOptions}: PageGetStaticPropsParams){
 	return async function(context: GetStaticPropsContext): Promise<GetStaticPropsResult<PageProps>> {
 		const file = context.params!.file! as string;
 		const mdx = matter((await import(`~/pages/${dir}/${file}.mdx`)).default);
@@ -21,6 +27,7 @@ function pageGetStaticProps(dir: string, frontendOptions?: PageFrontendOptions){
 		}
 		return {
 			props: {
+				dir,
 				source: await serialize(mdx.content),
 				data: mdx.data,
 				options: frontendOptions || null
@@ -50,7 +57,7 @@ export type CollectionPageBackendOptions = {
 export function collectionPageBackend({dir, frontendOptions}: CollectionPageBackendOptions){
 	dir = normalizePageURL(dir);
 	return {
-		getStaticProps: pageGetStaticProps(dir, frontendOptions),
+		getStaticProps: pageGetStaticProps({ dir, frontendOptions }),
 		getStaticPaths: pageGetStaticPaths(dir)
 	}
 }

@@ -2,10 +2,13 @@ import type { MDXComponents } from "mdx/types";
 
 import Typography, {TypographyProps} from "@mui/material/Typography"
 import Link from "@mui/material/Link"
+import theme from "~/style/theme";
 
 function TypographyVariant(variant: TypographyProps["variant"]){
-	return ({children}) => <Typography variant={variant}>{children}</Typography>
+	return ({children}) => <Typography variant={variant} sx={{ mb: 2 }}>{children}</Typography>
 }
+
+
 
 export const components: MDXComponents = {
 	...Object.fromEntries([1,2,3,4].map(
@@ -13,4 +16,5 @@ export const components: MDXComponents = {
 	)),
 	p: TypographyVariant("body1"),
 	a: ({children, rel, href, target}) => <Link {...{rel, href, target}}>{children}</Link>,
+	img: ({ src, alt }) => <img src={src} alt={alt} style={{ maxWidth: "100%", marginBottom: theme.spacing(1), marginTop: theme.spacing(1) }}/>
 }

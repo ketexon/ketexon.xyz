@@ -10,6 +10,7 @@ import normalizePageURL from "~/util/normalizePageURL";
 import titleCase from "~/util/titleCase"
 
 import { PageBrowserProps } from "./pageBrowser"
+import backDir from "~/util/backDir"
 
 export type PageBrowserPage = {
 	filename: string,
@@ -18,6 +19,7 @@ export type PageBrowserPage = {
 
 export type PageBrowserGetStaticPropsOptions = {
 	dir: string | URL,
+	generateBackPage?: boolean,
 	pinnedPages?: Partial<PageBrowserPage>[],
 	title?: string
 }
@@ -40,7 +42,8 @@ export async function walkCollectionPages(dir: string): Promise<PageBrowserPage[
 	return pages;
 }
 
-export function pageBrowserBackend({dir, pinnedPages, title}: PageBrowserGetStaticPropsOptions) {
+export function pageBrowserBackend({dir, pinnedPages, generateBackPage, title}: PageBrowserGetStaticPropsOptions) {
+	generateBackPage ??= true;
 	const dirString = normalizePageURL(dir);
 	if(title === undefined){
 		title = titleCase(path.basename(dirString));
@@ -60,7 +63,8 @@ export function pageBrowserBackend({dir, pinnedPages, title}: PageBrowserGetStat
 						)
 					) : [],
 					title: title as string,
-					dir: dirString
+					dir: dirString,
+					backPage: backDir(dirString),
 				},
 			}
 		}

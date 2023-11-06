@@ -161,7 +161,6 @@ function EducationAndInfo({}: PanelProps) {
 						primary="UCLA"
 						secondary={<>
 							Linguistics and Computer Science BA <br/>
-							Math minor <br/>
 							2021{en}present
 						</>}
 					/>

@@ -11,8 +11,8 @@ import Button, {ButtonProps} from "@mui/material/Button";
 
 const NavLinks: {text: string, href: string}[] = [
 	{text: "About", href: "/about"},
-	{text: "Math", href: "/math"},
-	{text: "CS", href: "/computer-science"},
+	// {text: "Math", href: "/math"},
+	{text: "Computer Science", href: "/computer-science"},
 	{text: "Writing", href: "/writing"},
 ]
 

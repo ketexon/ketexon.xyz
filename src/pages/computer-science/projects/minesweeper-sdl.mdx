@@ -1,0 +1,22 @@
+---
+title: Minesweeper SDL
+description: Minesweeper made in SDL
+date: 24 July 2023
+published: true
+image: /img/computer-science/minesweeper-sdl.png
+tags: ["C", "SDL"]
+---
+![gif showing it working](https://user-images.githubusercontent.com/29184562/250816747-2a79d476-d679-438e-b70f-c9d9a31625e0.gif)
+
+I made [Minesweeper](https://github.com/ketexon/Minesweeper-SDL) using C17 with SDL! [Latest release](https://github.com/ketexon/Minesweeper-SDL/releases/latest).
+
+Some of the cool features I added are:
+ - Resize support
+ - Embedded resources (WinAPI resources)
+ - Customizable spritesheets using resources or at runtime (not in release)
+ - A solver that uses matrices (very slow, need to rewrite) (not in release)
+ - Lua scripting (WIP) (not in release, ignore the half-working code in main 😵‍💫)
+
+Part of the point of using C is to see if I could do "object oriented C" (explicit `this` parameter). I think it worked well with my naming conventions (for struct `Struct`, a member function is `Struct_Function`), and the only thing now stopping me from using C for everything is lack of a good standard library 😭.
+
+Credit goes to [my sister](https://www.instagram.com/junaxy_art/) for making the only other theme option.
