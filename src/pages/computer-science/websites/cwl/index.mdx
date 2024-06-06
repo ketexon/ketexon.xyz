@@ -1,0 +1,25 @@
+---
+title: Center for World Languages Website
+description: Hello
+date: 27 Feb 2024
+image: /img/computer-science/cwl/CWL.jpg
+published: true
+tags: ["Web Dev"]
+---
+![Home page for the Center for World Languages](/img/computer-science/cwl/CWL.jpg)
+
+I implemented the entire front-end for UCLA's [Center for World Languages](https://www.international.ucla.edu/cwl), as well as connected it with the in-house CMS.
+
+The website had a few functions:
+
+- to display articles and events from the Center for World Languages and its sub-centers the National Heritage Language Resource Center and the Russian Flagship Program
+- show static data (configurable from the CMS) about the center
+- to show CWL's related publications
+
+The tech stack was an in-house stack that had been in place for many years, employing ASP.NET Pages and VB with custom server-side components mainly used to abstract away database calls. The frontent was vanilla HTML/CSS/JS with jQuery and Foundation CSS.
+
+Before I had worked on this website, I was more familiar with holistic and typed component styling libraries like Material UI. I had done principally pure HTML/CSS/JS with PHP half a dozen years prior, but grew shy of it after hearing rumors that PHP was out of style. However, for this website, the styling library (Foundation CSS) was not configurable without SASS, so most styling was done from scratch. In addition, the backend was not well suited for most of the dynamic data, so it was also done frontend.
+
+I was very familiar with CSS {'\u2014'} from 2016 when browsers had 0 support for any cool features and I had 0 support for best practices. I thus experimented heavily with these things I had lacked in my youth! I used CSS variables to substitute a theme manager. I used `calc` to do cool calculations with these variables. I used cool selectors like `:is` and `:not`. I tried different naming/rule conventions, like tailwind-style utility classes and BEM. I tried `grid`. I love grid. I learned how to solve a bunch of problems using *modern* CSS, trying my best to not use JavaScript for non-interactivity, while trying to avoid jank (eg. the checkbox hack) and write clean JavaScript.
+
+Some useful skills I learned were mobile responsiveness and accessibility. The Centers of course needed mobile responsiveness, as their websites received a large audience (unlike my personal project websites). In addition, they were required (by law, I'd guess) to be accessible. I learned about how to add accessibility at many levels, from contrast to typography to keyboard controls to semantic HTML and screen reader support. I now think about accessibility in a lot of places, like games. If there are no keyboard controls, something's probably wrong (don't check this website's accessibility, I'll look like a hypocrite).

@@ -1,0 +1,23 @@
+---
+title: Slayride
+description: Hello
+date: 24 December 2022
+published: true
+image: https://img.itch.zone/aW1nLzEwODYzNjMxLnBuZw==/original/85Fl8S.png
+tags: ["Game Dev", "Unity"]
+---
+![banner image](https://img.itch.zone/aW1nLzEwODYzNjMxLnBuZw==/original/85Fl8S.png)
+
+[Slayride](https://ketexon.itch.io/slayride) is a game jam game made for ACM Studio @ UCLA's 2022 Snowjam.
+
+It is a vertical shoot-em-up game where you are Gimmy and are trying to kill Santa (he gave you too much coal). You shoot out snowballs and can freeze time (the theme was frozen c:{'<'})
+
+I was in charge of programming, where I coded all of the gameplay logic. I, of course, overengineered everything, and designed a `ScriptableObject` system to make the enemies, shots, and shot patterns generic and extendable. I also created a parser to allow us to design the stage in a text file (another one of my silly overengineering extravaganzas).
+
+Another cool thing that I did was experiment with `ScriptableObject`s as static variable alternatives. Specifically, I reimplemented Unity's `Time` using ScriptableObjects so that the game time could be different for the player and for the enemies. I later decided to put this in its own library (Kulip, on my GitHub).
+
+Something I learned in this project (the hard way) was that if, at any point, you import from `UnityEditor`, the game will not build. I happened to import from `UnityEditor`. The thing I imported happened to be integral for the code. I thus had to rewrite the code. We submitted very late.
+
+The credits are on the itch!
+
+![gameplay gif](/img/computer-science/slayride.gif)

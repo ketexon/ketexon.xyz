@@ -1,0 +1,27 @@
+---
+title: Minesweeper SDL
+description: Minesweeper made in SDL
+date: 24 July 2023
+published: true
+image: /img/computer-science/minesweeper-sdl.png
+tags: ["C", "SDL"]
+---
+![gif showing it working](https://user-images.githubusercontent.com/29184562/250816747-2a79d476-d679-438e-b70f-c9d9a31625e0.gif)
+
+I made [Minesweeper](https://github.com/ketexon/Minesweeper-SDL) using C17 with SDL! [Latest release](https://github.com/ketexon/Minesweeper-SDL/releases/latest).
+
+Some of the cool features I added are:
+
+- Resize support
+- Embedded resources (WinAPI resources)
+- Customizable spritesheets using resources or at runtime (not in release)
+- A solver that uses matrices (very slow, need to rewrite) (not in release)
+- Lua scripting (WIP) (not in release, ignore the half-working code in main 😵‍💫)
+
+Part of the point of using C is to see if I could do "object oriented C" (ie. using an explicit `this` parameter). I think it worked well with my naming conventions (for struct `Struct`, a member function is `Struct_Function`), and the only thing now stopping me from using C for everything is lack of a good standard library and the need for macros 😭.
+
+I didn't really learn much from this project, except maybe basic WinAPI menuing (which I hadn't done too much before, but it looks ugly so it's not too impressive). The point was more to complete a full project in a reasonable amount of time, and Minesweeper was a good choice of game, since it was easily doable (and I like Minesweeper).
+
+The solver algorithm was cool to write. I created my own primitive matrix struct (what even is MIMD?) and implemented an algorithm to solve a system of equations (of 1s) by turning the matrix into RREF. If we represent each cell $C_{ij}$ as a 1 if there's a mine, we have that the number on each cell $M_{ij}$ is equal to the sum of the neighboring cells $M_{ij} = C_{i-1,j-1} + C_{i-1,j} + ... + C_{i+1,j+1}$. Thus, we have a LARGE systems of equations, and we can use matrices to solve for the values of $C_{ij}$. Of course, the algorithm is like $O(n^5)$.
+
+Credit goes to [my sister](https://www.instagram.com/junaxy_art/) for making the only other theme option.

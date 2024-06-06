@@ -23,7 +23,7 @@ export type PageProps = {
 export function Page({dir, source, data, options}: PageProps) {
 	return (
 		<>
-			<Title>{`${data.title ? data.title + " | " : ""} Ketexon`}</Title>
+			<Title>{data.title}</Title>
 			<Head>
 				{data.description && <meta name="description" content={data.description}/>}
 				{data.keywords && <meta name="keywords" content={data.keywords}/>}

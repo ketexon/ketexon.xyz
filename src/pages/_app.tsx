@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 import { MDXProvider } from "@mdx-js/react";
 
 // Styles
-import "../stylesheets/next.scss"
+import "../stylesheets/next.css"
 
 import { components } from "~/mdx/components";
 

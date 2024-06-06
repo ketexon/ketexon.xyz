@@ -11,10 +11,11 @@ import titleCase from "~/util/titleCase"
 
 import { PageBrowserProps } from "./pageBrowser"
 import backDir from "~/util/backDir"
+import { getPageNameFromFile } from "./getPageNameFromFile"
 
 export type PageBrowserPage = {
 	filename: string,
-	matter: Omit<matter.GrayMatterFile<any>, "content" | "orig">
+	matter: Omit<matter.GrayMatterFile<any>, "content" | "orig">,
 }
 
 export type PageBrowserGetStaticPropsOptions = {
@@ -25,20 +26,31 @@ export type PageBrowserGetStaticPropsOptions = {
 }
 
 export async function walkCollectionPages(dir: string): Promise<PageBrowserPage[]> {
-	const pages = (await Promise.all(
-		(await walk(resolvePage(dir)))
+	const absoluteDir = resolvePage(dir);
+	const pages: PageBrowserPage[] = (await Promise.all(
+		(await walk(absoluteDir))
 			.filter(filename => path.extname(filename) === ".mdx")
-			.map((filename): Promise<PageBrowserPage> =>
-				import(`~/pages/${dir}/${path.basename(filename)}`).then(
-					mod => ({
-						filename: path.basename(filename, path.extname(filename)),
-						matter: omit(matter(mod.default), "content", "orig"),
-					})
-				)
-			)
-		)).filter(({matter}) => matter.data.published !== false);
+			.map((filename): Promise<PageBrowserPage | null> => {
+				const relativePath = normalizePageURL(path.relative(absoluteDir, filename));
+				return import(`~/pages/${dir}/${relativePath}`).then(
+					(mod): PageBrowserPage => {
+						const frontmatter = matter(mod.default);
+						return {
+							filename: getPageNameFromFile(dir, filename),
+							matter: omit(frontmatter, "content", "orig"),
+						}
+					}
+				).catch((e) => {
+					console.error(`Could not import collection page: ${filename}\n${e}`);
+					return null;
+				})
+			})
+		))
+		.filter(p => p !== null)
+		.map(p => p as PageBrowserPage)
+		.filter(({matter}: PageBrowserPage) => matter.data.published !== false);
 
-	pages.sort(({matter: aMatter}, {matter: bMatter}) => (aMatter.data.date as Date) < (bMatter.data.date as Date) ? -1 : 1);
+	pages.sort(({matter: aMatter}, {matter: bMatter}) => (aMatter.data.date as Date) > (bMatter.data.date as Date) ? -1 : 1);
 	return pages;
 }
 

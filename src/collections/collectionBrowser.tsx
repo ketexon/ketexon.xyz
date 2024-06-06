@@ -30,18 +30,35 @@ export type Collection = {
 
 export type CollectionBrowserProps = {
 	title: string,
-	collections: Collection[]
+	collections: Collection[],
+	children?: React.ReactNode,
+	disableTitle?: boolean,
+	disableContainer?: boolean,
 }
 
-export function CollectionBrowser({collections, title}: CollectionBrowserProps) {
+export function CollectionBrowser({collections, title, children, disableTitle, disableContainer}: CollectionBrowserProps) {
+	disableTitle ??= false;
+	disableContainer ??= false;
 	const nCollections = collections.length;
+
+	const CollectionBrowserContainer =
+		disableContainer
+			? (
+				({ children }) => <>{children}</>
+			)
+			: (
+				({ children }) => <Container>{children}</Container>
+			)
+
 	return (
-		<Container>
+		<CollectionBrowserContainer>
 			<Title>{title}</Title>
-			<Typography variant="h1">
+			{ disableTitle || <Typography variant="h1">
 				{title}
 			</Typography>
-			<Grid2 container spacing={2}>
+			}
+			{children && <Box mb={2}>{children}</Box>}
+			<Grid2 container spacing={2} pb={2}>
 				{
 					collections.map(({ dir, title, pages, lg, md, xs }, idx) => (
 						<Grid2 key={idx} lg={lg ?? 4} md={md ?? 6} xs={xs ?? 12}>
@@ -65,6 +82,6 @@ export function CollectionBrowser({collections, title}: CollectionBrowserProps) 
 					))
 				}
 			</Grid2>
-		</Container>
+		</CollectionBrowserContainer>
 	)
 }

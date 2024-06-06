@@ -405,9 +405,11 @@ export class Synth {
 			]
 		});
 
-		cube31.cubes[0].connect((this.nodes[3][0] as OscillatorSynthCube).frequencyGain)
-		cube31.cubes[1].connect((this.nodes[4][0] as OscillatorSynthCube).frequencyGain)
-		cube31.cubes[2].connect((this.nodes[5][0] as OscillatorSynthCube).frequencyGain)
+		cube31.cubes[0].connect((this.nodes[3][0] as OscillatorSynthCube).frequencyGain);
+		cube31.cubes[1].connect((this.nodes[4][0] as OscillatorSynthCube).frequencyGain);
+		cube31.cubes[2].connect((this.nodes[5][0] as OscillatorSynthCube).frequencyGain);
+
+		// (this.nodes[3][0] as OscillatorSynthCube)
 
 		// this.nodes[2][1].connect((this.nodes[5][0] as OscillatorSynthCube).oscillator.frequency)
 		// const lfo = new OscillatorNode(this.audioContext, {frequency: 1});

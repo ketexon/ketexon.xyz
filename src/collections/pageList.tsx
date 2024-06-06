@@ -59,6 +59,7 @@ export default function PageList({ dir, pages, pinned }: PageListProps){
 								display: "grid",
 								gridTemplateRows: "1fr min-content",
 								pb: 1,
+								flexBasis: 0,
 							}}>
 								<Box>
 									<Typography component="span" display="block" variant="h3">
@@ -91,6 +92,7 @@ export default function PageList({ dir, pages, pinned }: PageListProps){
 									minHeight: 0,
 									flexBasis: 0,
 									maxWidth: "100%",
+									objectFit: "contain",
 								}} src={page.matter.data.image}></img>
 							)}
 						</Box>

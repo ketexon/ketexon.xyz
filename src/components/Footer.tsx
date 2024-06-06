@@ -52,8 +52,8 @@ export default function Footer({}: NavBarProps){
 							}
 						}}>
 							<Box><IconButton disableRipple component={NextLink} href="https://github.com/ketexon" target="_blank" rel="noopenner"><GitHubIcon fontSize="large"/></IconButton></Box>
-							<Box><IconButton disableRipple component={NextLink} href="https://www.linkedin.com/in/zane-clark-52a48a166/" target="_blank" rel="noopenner"><LinkedInIcon fontSize="large"/></IconButton></Box>
-							<Box><IconButton disableRipple component={NextLink} href="https://www.youtube.com/channel/UCli-MHrym5Vjk0ai4m1EBpQ" target="_blank" rel="noopenner"><YouTubeIcon fontSize="large"/></IconButton></Box>
+							<Box><IconButton disableRipple component={NextLink} href="https://www.linkedin.com/in/ketexon/" target="_blank" rel="noopenner"><LinkedInIcon fontSize="large"/></IconButton></Box>
+							{/* <Box><IconButton disableRipple component={NextLink} href="https://www.youtube.com/channel/UCli-MHrym5Vjk0ai4m1EBpQ" target="_blank" rel="noopenner"><YouTubeIcon fontSize="large"/></IconButton></Box> */}
 						</Box>
 					</Box>
 				</Container>
